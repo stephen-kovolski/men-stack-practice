@@ -2,7 +2,7 @@
   "name": "men-stack-practice",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "./server.js",
   "scripts": {
     "start": "NODE_ENV=production node server",
     "dev": "nodemon server"
