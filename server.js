@@ -1,21 +1,20 @@
 
 const express = require('express');
 const dotenv = require('dotenv');
+const morgan = require('morgan')
+
+//load .env variables
+dotenv.config({ path: './config/config.env' });
 
 //Route FIles
 const bootcamps = require('./routes/bootcamps')
 
-//load .env variables
-dotenv.config('./config/config.env')
-
 const app = express();
 
-const logger = (req, res, next) => {
-    console.log(`${req.method} ${req.protocol}://${req.get('host')}${req.originalURL}`);
-    next();
+// Dev loggin middleware
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'))
 }
-
-app.use(logger)
 
 //mount routers
 app.use('/api/v1/bootcamps', bootcamps);
@@ -23,6 +22,4 @@ app.use('/api/v1/bootcamps', bootcamps);
 //access env variables with the process.env
 const PORT = process.env.PORT || 3000
 
-
-app.listen(PORT, console.log(`server running in ${process.env.NODE_ENV} mode on port ${PORT}`));
-
+const server = app.listen(PORT, console.log( `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`))

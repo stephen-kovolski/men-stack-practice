@@ -2,7 +2,7 @@
   "name": "men-stack-practice",
   "version": "1.0.0",
   "description": "",
-  "main": "./server.js",
+  "main": "server.js",
   "scripts": {
     "start": "NODE_ENV=production node server",
     "dev": "nodemon server"
@@ -12,6 +12,7 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.22"
   }
 }
